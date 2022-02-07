@@ -17,7 +17,8 @@ Traveler.init({
         }
     }
 }, {
-    sequelize
+    sequelize,
+    timestamps: false
 });
 
 module.exports = Traveler;

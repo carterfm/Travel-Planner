@@ -1,6 +1,7 @@
 const express = require('express');
+const { sequelize } = require('./models/Traveler');
 // Notes router
-const apiRoutes = require('./routes');
+const apiRoutes = require('./routes/index.js');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -16,6 +17,6 @@ app.get('*', (req, res) =>
 );
 
 //setting server to listen for requests
-app.listen(PORT, () =>
-  console.log(`App listening at ${PORT} 🚀`)
-);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});

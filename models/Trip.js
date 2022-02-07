@@ -11,7 +11,8 @@ Trip.init({
         type: DataTypes.INTEGER
     }
 }, {
-    sequelize
+    sequelize,
+    timestamps: false
 });
 
 module.exports = Trip;

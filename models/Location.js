@@ -9,7 +9,8 @@ Location.init({
         allowNull: false,
     }
 }, {
-    sequelize
+    sequelize,
+    timestamps: false
 });
 
 module.exports = Location;
