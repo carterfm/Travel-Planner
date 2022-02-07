@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
         }
         res.status(200).json(travelerData);
     } catch (err) {
-        response.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
@@ -31,14 +31,10 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const newTraveler = await Traveler.create(req.body);
-        //question: is this an ok way to check that what we're doing is kosher?
-        if(!newTraveler) {
-            res.status(404).json({ message: 'Cannot create new traveler; data missing.' });
-            return;
-        }
+        //If this doesn't work, it'll throw an error
         res.status(200).json(newTraveler);
     } catch (err) {
-        response.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
@@ -53,7 +49,7 @@ router.delete("/:id", async (req, res) => {
         }
         res.status(200).json(deletedTraveler);
     } catch (err) {
-        response.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 

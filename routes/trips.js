@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { response } = require('express');
 const { Trip } = require('../models');
 
 // It's done when the POST route /api/trips creates trip data between associated travelers and locations.
@@ -11,13 +10,10 @@ router.post("/", async (req, res) => {
             TravelerId: req.body.TravelerId,
             LocationId: req.body.LocationId
         })
-        if(!newTrip) {
-            res.status(404).json({ message: 'Cannot create new traveler; data missing.' });
-            return;
-        }
+        //If the above doesn't work, it'll throw an error
         res.status(200).json(newTrip);
     } catch (err) {
-        response.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
